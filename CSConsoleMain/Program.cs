@@ -7,12 +7,12 @@ namespace CSConsoleMain
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IntPtr star = CStarLib.MakeStar(13, 13, 0, 0, 0, 0, 15);
 
-            IntPtr star = CStarLib.MakeStar(20, 20, 0, 0, 0, 0, 20);
+            Console.WriteLine("Star : ");
 
-            for (int y = 0; y < 40; y++) {
-                for (int x = 0; x < 40; x++) {
+            for (int y = 0; y < 27; y++) {
+                for (int x = 0; x < 27; x++) {
                     if (CStarLib.StarCheckInside(star, x, y)) {
                         Console.Write("* ");
                     }
