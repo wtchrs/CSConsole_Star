@@ -3,27 +3,24 @@ using System.Runtime.InteropServices;
 
 namespace CSConsoleMain
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
 
             IntPtr star = CStarLib.MakeStar(20, 20, 0, 0, 0, 0, 20);
 
-            for(int y = 0; y < 40; y++)
-            {
-                for(int x = 0; x < 40; x++)
-                {
-                    if(CStarLib.StarCheckInside(star, x, y))
-                    {
-                        Console.Write("**");
+            for (int y = 0; y < 40; y++) {
+                for (int x = 0; x < 40; x++) {
+                    if (CStarLib.StarCheckInside(star, x, y)) {
+                        Console.Write("* ");
                     }
-                    else
-                    {
+                    else {
                         Console.Write("  ");
                     }
                 }
+
                 Console.WriteLine();
             }
 
@@ -31,24 +28,16 @@ namespace CSConsoleMain
         }
     }
 
-    class CStarLib
+    internal class CStarLib
     {
         [DllImport("CStarMarshall.dll", EntryPoint = "make_star")]
         public static extern IntPtr MakeStar(
-            double x,         double y,
-            double vx,        double vy,
-            double angle,     double rotate,
-            double ldistance, double ratio = 0.36
-        );
+            double x, double y, double vx, double vy, double angle, double rotate, double ldistance, double ratio = 0.36);
 
         [DllImport("CStarMarshall.dll", EntryPoint = "make_colored_star")]
         public static extern IntPtr MakeColoredStar(
-            ulong  color,
-            double x,         double y,
-            double vx,        double vy,
-            double angle,     double rotate,
-            double ldistance, double ratio = 0.36
-        );
+            ulong color, double x, double y, double vx, double vy, double angle, double rotate, double ldistance,
+            double ratio = 0.36);
 
         [DllImport("CStarMarshall.dll", EntryPoint = "delete_star")]
         public static extern void DeleteStar(IntPtr p_star);
