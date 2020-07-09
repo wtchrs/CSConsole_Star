@@ -1,0 +1,11 @@
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 100
+AlignConsecutiveAssignments: true
+BreakBeforeBraces: 'Custom'
+BraceWrapping:
+  AfterClass: true
+  AfterEnum: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
